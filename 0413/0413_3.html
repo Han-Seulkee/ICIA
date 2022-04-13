@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h2>if~else문을 이용한 학점관리</h2>
+    <script>
+      function res(name, score, result) {
+        document.write(name+"님 점수는 "+score+"점 이며 학점은 '"+result+"'입니다,"+"<br>");
+      }
+
+      /* var name = prompt("이름을 입력하세요", "");
+      var score = prompt("학점을 입력하세요.",""); */
+      var name = "홍길동";
+      var score = 90;
+      var result;
+
+      if (score > 100 || score < 0) 
+        document.write("0~100사이 숫자만 입력 가능합니다.");
+      else if (score >= 90) {
+        result = 'A';
+        res(name, score, result);
+      }
+      else if (score >= 80) {
+        result = 'B';
+        res(name, score, result);
+      }
+      else if (score >= 70) {
+        result = 'C';
+        res(name, score, result);
+      }
+      else if (score >= 60) {
+        result = 'D';
+        res(name, score, result);
+      }
+      else {
+        result = 'F'
+        res(name, score, result);
+      }
+
+      // document.write(name+"님 점수는 "+score+"점 이며 학점은 '"+result+"'입니다,"+"<br>");
+    </script>
+  </body>
+</html>
