@@ -16,6 +16,7 @@
 
       if (score > 100 || score < 0) 
         document.write("0~100사이 숫자만 입력 가능합니다.");
+      
       else if (score >= 90) 
         result = 'A';
 
@@ -29,7 +30,7 @@
         result = 'D';
         
       else 
-        result = 'F'
+        result = 'F';
 
       res(name, score, result);
       // document.write(name+"님 점수는 "+score+"점 이며 학점은 '"+result+"'입니다,"+"<br>");
