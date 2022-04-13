@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="login.css"> -->
+    
+    <!-- input 속성 -->
+    <!-- type: text, radio, checkbox, password, button, hidden, submit, reset -->
+    <!-- name: id(선택자), 변수 이름 -->
+    <!-- required "브라우저"에서 에러메시지 출력 (상세내용 출력x) -->
+    
+    <title>input타입 종류</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>사용자 정보</legend>
+        이름:<input type="text" name="my_name" size="15"> <br>
+        비밀번호: <input type="password" name="my_password" size="15"> <br>
+        <input type="text" name="my_name2" size="15" value="수정불가" readonly>
+      </fieldset>
+        <br>
+        <fieldset>
+          <legend>뷁</legend>
+        <input type="radio" name="food" value="치킨" checked>치킨
+        <input type="radio" name="food" value="피자">피자
+        <input type="radio" name="food2" value="짜장면">짜장면
+        <input type="radio" name="food2" value="짬뽕">짬뽕
+        <br>
+        <input type="checkbox" name="computer" value="CPU" checked>CPU
+        <input type="checkbox" name="computer" value="memory">memory
+        <input type="checkbox" name="computer" value="hdd">하드디스크
+        <input type="checkbox" name="computer" value="cdrom">cdrom
+        <input type="checkbox" name="computer" value="Grapic">grapic
+      </fieldset>
+  </body>
+</html>
