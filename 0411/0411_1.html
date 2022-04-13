@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      td {padding: 3px 1px;}
+    </style>
+    <title>사용자 정보 입력</title>
+  </head>
+  <body>
+    <form action="0411.html" method="get" name="get1">
+
+      <table>
+        <tr>
+          <td>이름:</td>
+          <td><input type="text" name="user_name"></td>
+        </tr>
+        <tr>
+          <td>비밀번호:</td>
+          <td><input type="password" name="pw"></td>
+        </tr>
+        <tr>
+          <td>연락처:</td>
+          <td>
+            <input type="text" name="phone1" size="5">
+            <input type="text" name="phone2" size="5">
+            <input type="text" name="phone3" size="5"></td>
+        </tr>
+        <tr>
+          <td>사진:</td>
+          <td><input type="file" name="img"></td>
+        </tr>
+        <tr>
+          <td>성별구분:</td>
+          <td>
+            <input type="radio" name="zen" value="1">남
+            <input type="radio" name="zen" value="0" checked>여</td>
+        </tr>
+        <tr>
+          <td>사용언어:</td>
+          <td>
+            <input type="checkbox" name="lan" value="kor" checked>한국어
+            <input type="checkbox" name="lan" value="eng">영어
+            <input type="checkbox" name="lan" value="chi">중국어</td>
+        </tr>
+        <tr>
+          <td>자기소개:</td>
+          <td><textarea name="info" rows="5" cols="30">간단하게 입력하세요</textarea></td>
+        </tr>
+        <tr>
+          <td>국적:</td>
+          <td>
+            <select name="nati">
+              <option value="KOREA">KOREA</option>
+              <option value="USA">USA</option>
+              <option value="CHINA">CHINA</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td>좋아하는 음식:</td>
+          <td>
+            <select name="food" multiple>
+              <option value="kimchi">김치</option>
+              <option value="bulgogi">불고기</option>
+              <option value="pajeun">파전</option>
+              <option value="bibimbap">비빔밥</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

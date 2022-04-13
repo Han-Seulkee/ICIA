@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <script src="../js/example.js" defer>
+      /* function printHi() {
+        document.getElementById("memo").innerHTML = "Hello World!!!";
+      } */
+    </script>
+
+    <style>
+      #memo.hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 버튼을 선택하면 id=memo 로 되어있는 p태그에 "Hello World" 라고 출력하는 화면 구현 
+    화면 내용: 아래 버튼을 선택하세요
+    button onclick="">버튼선택<
+    -->
+    <h1>버튼을 선택하세요</h1>
+    <button id="hide" onclick="printHi()">버튼선택</button>
+    <p id="memo"></p>
+    <br>
+    <h2>문자열 출력</h2>
+    <p id="str"></p>
+    <script>
+      var fStr = "이것은 문자열입니다.";
+      var sStr = '이것은 문자열입니다.';
+      var tStr = "내 이름은 '홍길동'입니다.";
+      var foStr = '내 이름은 "홍길동"입니다.';
+      document.getElementById("str").innerHTML = 
+                fStr+"<br>"+sStr+"<br>"+tStr+"<br>"+foStr;
+    </script>
+    <br><br>
+    <h2>null&undefined</h2>
+    <p id="result"></p>
+    <script>
+      var num; //변수정의, 값 대입 안함
+      var str = null; //null값, object타입
+      document.getElementById("result").innerHTML = 
+                (typeof num)+"<br>"+(typeof str)+"<br>"+(typeof sNum); //sNum 정의 안된 변수
+    </script>
+
+    <br>
+    
+    <input id="cc" type="color" value="#00BFFF" onchange="changeColor(this.value)">
+    
+    <script>
+      function changeColor(e) {
+        console.log(e);
+        //document.body.style.color = e;
+        
+        
+        /************************** 
+        document.getElementsByTagName("h2").style.color = e; (X)
+        object타입
+        console.log(el.length); --> 2
+
+        var el = document.getElementsByTagName("h2");
+        
+        for (var i = 0; i<el.length; i++) {
+          el[i].style.color = e;
+        }
+        ***************************/
+
+        //document.getElementById("result").style.color = e;
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../js/example.js"></script>
+  </head>
+  <body>
+    <h1>html dom요소를 이용한 innerHTML 프로퍼티</h1>
+    <p id="text">이 문장이 변경됩니다.</p>
+
+    <script>
+      /* document.write(4*5);
+      console.log(4*5);
+      alert("확인버튼 선택시까지 중지됩니다."); */
+
+      var str = document.getElementById("text");
+      str.innerHTML = "문장바뀜";
+    </script>
+    <br>
+    <h1>head에 자바스크립트</h1>
+    <p>날짜와 시간정보 조회</p>
+    <button onclick="printDate()">현재날짜</button>
+    <p id="date"></p>
+  </body>
+</html>
