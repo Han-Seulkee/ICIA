@@ -1,0 +1,18 @@
+switch문
+
+switch(조건값) {
+  case 값1: 조건값이 값1일때 실행할 실행문; break;
+  case 값2:           ""
+    …
+  default: 조건값이 어떠한 case절에도 해당하지 않을때; break; (위치 상관X)
+}
+//break를 만나기 전까지 전부 실행
+
+반복문
+
+while, do while, for
+조건이 참일때 실행문을 반복
+
+break, continue
+break: 현재 속한 반복문(한개)에서만 빠져나감
+continue: 현재 속한 반복문의 다음 문장을 실행하지 않고, 바로 증감식, 조건식으로 넘어감

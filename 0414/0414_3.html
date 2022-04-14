@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h2>break, continue문</h2>
+    <script>
+      var i = 0, sum = 0;
+      while(true){
+        document.write("안에 있는 while시작<br>");
+        while(true){
+          sum += i;
+          if(sum > 3000)
+            break;
+          i++;
+        }
+        document.write("안에 있는 while끝<br>");
+        break;
+      }
+      document.write(i+"까지 더하면 sum = "+sum+"<br>");
+      
+      document.write("for문 <br>");
+      for(i=0,sum=0; ;i++){
+          sum += i;
+          if(sum > 3000)
+            break;
+        }
+      document.write("for문: "+i+"까지 더하면 sum = "+sum+"<br>");
+        
+      document.write("continue문<br>");
+      var msg = "";
+      for(i=0;i<10;i++){
+        if(i == 3)
+          continue;
+        msg += i + "<br>";
+        if(i == 5) break;
+      }
+      document.write(msg);
+
+
+    </script>
+  </body>
+</html>

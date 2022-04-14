@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function cal() {
+        var num1 = document.form1.num1.value; //input value type: string
+        if(num1 == ""){
+          alert("값을 입력하세요");
+          document.form1.num1.focus();
+          return;
+        }
+
+        if(isNaN(num1)) {
+          alert("숫자만 입력 가능합니다. 다시 입력하세요.");
+          num1 = "";
+          document.form1.num1.focus();
+          return;
+        }
+
+        if(parseInt(num1)<=0) {
+          alert("큰수에서 작은수를 나눌수 있도록 다시 입력해주세요")
+          document.form1.num1.focus();
+          return;
+        }
+        
+        if(num1 % 2 == 0)
+          alert("짝수");
+        else
+          alert("홀수");
+
+          //confirm(): 확인/취소 = true/false
+        if(confirm("서버로 보내시겠습니까?")) {
+          document.form1.submit();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>짝홀수 맞추기</h1>
+    숫자를 입력하세요
+    <form name="form1" action="../0412/sample.html" method="post">
+      숫자:
+      <input type="text" id="num1" name="num1" size="5">&nbsp;
+      <input type="button" name="result" onclick="cal()" value="계산하기">
+    </form>
+
+  </body>
+</html>

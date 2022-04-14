@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h2>반복문</h2>
+    <script>
+      //입력받은 숫자 만큼 누적 더하기
+      //var num = parseInt(prompt("0보다 큰 정수 입력",""));
+      var num = 5;
+      var i = 1;
+      var sum = 0;
+      while(i <= num) {
+        sum += i++;
+        //sum = sum + i;
+        //i++;
+      }
+      document.write("i: "+i+"<br>");
+      document.write("i부터 "+num+"까지 합은 "+sum+"<br>");
+
+      //while문을 이용해서 0부터 9까지 출력
+      //var i = 0 <-- 재선언 필요X 0으로 초기화
+      i = 0;
+      while (i<10) {
+        document.write("while 카운트: "+i+++"<br>")
+      }
+
+      //do-while문을 이용해서 0부터 9까지
+      i = 0;
+      do {
+        document.write("do-while 카운트: "+i+++"<br>")
+      } while(i<10)
+
+      //for문을 이용해서 0부터 9까지
+      for (let i = 0; i < 10; i++) {
+        document.write("while 카운트: "+i+"<br>");
+      }
+
+
+      //구구단
+      var gugu = parseInt(prompt("구구단 외우기","0보다 큰 숫자 입력"));
+      
+
+      for (let i = 1;i<10;i++){
+        document.write(gugu+"*"+i+"= "+gugu*i+"<br>");
+      }
+
+      i=1;
+      r=0;
+
+
+      while(i<=9) {
+        r=gugu*i;
+        document.write("while"+gugu+"*"+i+++"= "+r+"<br>");
+      }
+
+      i=1;
+      r=0;
+      do{
+        r=gugu*i;
+        document.write("do-while"+gugu+"*"+i+++"= "+r+"<br>");
+      } while(i<=9)
+
+
+    </script>
+  </body>
+</html>

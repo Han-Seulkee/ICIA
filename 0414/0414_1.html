@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h2>swich문</h2>
+    <script>
+      //var gr = prompt("성적입력", "A~F");
+      
+      //switch사용
+      /* switch(gr) {
+        case 'a':
+        case 'A': document.write("A학점 입니다."); break;
+        case 'b':
+        case 'B': document.write("B학점 입니다."); break;
+        case 'c':
+        case 'C': document.write("C학점 입니다."); break;
+        case 'd':
+        case 'D': document.write("D학점 입니다."); break;
+        case 'f':
+        case 'F': document.write("F학점 입니다."); break;
+        default: document.write("알수없는 학점입니다.");
+      } */
+
+
+      //switch -> if문으로 변경
+      /* if(gr === null) 
+        document.write("취소");
+
+      else{
+        if(gr == 'A' || gr == 'a')
+          document.write("A학점 입니다.");
+
+        else if(gr == 'B' || gr == 'b')
+          document.write("B학점 입니다.");
+
+        else if(gr == 'C' || gr == 'c')
+          document.write("C학점 입니다.");
+
+        else if(gr == 'D' || gr == 'd')
+          document.write("D학점 입니다.");
+        
+        else if(gr == 'F' || gr == 'f')
+          document.write("F학점 입니다.");
+        
+        else 
+          document.write("알수없는 학점입니다.");
+      } */
+
+
+      var season = parseInt(prompt("월 입력", ""));
+      
+      //switch 여러 케이스를 한번에 처리: 모든 절을 실행, 처리하는 실행문을 입력하지 않으면 넘어감. break를 만나면 탈출
+      /* switch (season) {
+        case 3: 
+        case 4: 
+        case 5: document.write("봄 입니다."); break;
+        case 6: 
+        case 7: 
+        case 8: document.write("여름 입니다."); break;
+        case 9: 
+        case 10: 
+        case 11: document.write("가을 입니다."); break;
+        case 12:
+        case 1:
+        case 2: document.write("겨울 입니다."); break;
+        default: document.write("계절을 모르겠습니다.");
+      } */
+
+
+      //switch -> if문
+      if(season == 3 || season == 4 || season == 5)
+        document.write("봄");
+      else if(season == 6 || season == 7 || season == 8)
+        document.write("여름");
+      else if(season == 9 || season == 10 || season == 11)
+        document.write("가을");
+      else if(season == 12 || season == 1 || season == 2)
+        document.write("겨울");
+      else
+        document.write("계절을 모르겠습니다.");
+
+      
+      
+    </script>
+  </body>
+</html>
