@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <h2>if~else문을 이용한 학점관리</h2>
+  <head>
     <script>
       function res(name, score, result) {
         document.write(name+"님 점수는 "+score+"점 이며 학점은 '"+result+"'입니다,"+"<br>");
       }
-
-      /* var name = prompt("이름을 입력하세요", "");
-      var score = prompt("학점을 입력하세요.",""); */
-      var name = "홍길동";
-      var score = 90;
+    </script>
+  </head>
+  <body>
+    <h2>if~else문을 이용한 학점관리</h2>
+    <script>
+      var name = prompt("이름을 입력하세요", "");
+      var score = prompt("학점을 입력하세요.","");
+      // var name = "홍길동";
+      // var score = 90;
       var result;
 
       if (score > 100 || score < 0) 
         document.write("0~100사이 숫자만 입력 가능합니다.");
       
-      else if (score >= 90) 
+      //&&(앞뒤가 모두 true) - 앞이 true면 뒤에까지 검사/false면 검사필요x 
+      //||(하나만 true) -  앞이 false면 뒤에까지 검사/true면 검사필요x 
+      
+      //60점 미만이 많을 경우 뒤에까지 검사x(확률따지기)
+      else {
+        if(score < 60) 
+        result = 'F'
+      
+        else if (score >= 90) 
         result = 'A';
 
-      else if (score >= 80) 
-        result = 'B';
+        else if (score >= 80) 
+          result = 'B';
 
-      else if (score >= 70) 
-        result = 'C';
+        else if (score >= 70) 
+          result = 'C';
 
-      else if (score >= 60) 
-        result = 'D';
-        
-      else 
-        result = 'F';
+        else
+          result = 'D';
+          
+        res(name, score, result);
+      }
 
-      res(name, score, result);
-      // document.write(name+"님 점수는 "+score+"점 이며 학점은 '"+result+"'입니다,"+"<br>");
+      
+      //document.write(name+"님 점수는 "+score+"점 이며 학점은 '"+result+"'입니다,"+"<br>");
     </script>
   </body>
 </html>
