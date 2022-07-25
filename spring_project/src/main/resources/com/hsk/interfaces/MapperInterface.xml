@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mybatis에 대한 연결 -->
+<mapper namespace="com.hsk.interfaces.MapperInterface">
+	<select id="isMember" parameterType="com.hsk.beans.AuthBean" resultType="string">
+		SELECT PMB_PASSWORD FROM PMB WHERE PMB_CODE = #{pmbCode}
+	</select>
+	<select id="getPmbCode" resultType="string">
+		SELECT NVL(TO_CHAR(TO_NUMBER(MAX(PMB_CODE))+1),TO_CHAR(SYSDATE, 'YYYYMM')||'01')
+		AS PMBCODE FROM PMB WHERE SUBSTR(PMB_CODE, 1,6) = TO_CHAR(SYSDATE, 'YYYYMM')
+	</select>
+	<select id="getLevelList" resultType="com.hsk.beans.AuthBean">
+		SELECT MLV_CODE AS PMBLEVEL, MLV_NAME AS PMBLEVELNAME FROM MLV
+	</select>
+	<select id="getClassList" resultType="com.hsk.beans.AuthBean">
+		SELECT CLA_CODE AS PMBCLASS, CLA_NAME || '[' || CLA_NUM || ']' AS PMBCLASSNAME FROM CLA
+	</select>
+	<insert id="insPmb" parameterType="com.hsk.beans.AuthBean">
+		INSERT INTO PMB(PMB_CODE, PMB_PASSWORD, PMB_NAME, PMB_MLVCODE, PMB_CLACODE, PMB_EMAIL) 
+  		VALUES(#{pmbCode}, #{pmbPassword}, #{pmbName}, #{pmbLevel}, #{pmbClass}, #{pmbEmail} )
+	</insert>
+	<insert id="insAsl" parameterType="com.hsk.beans.AuthBean">
+		INSERT INTO ASL(ASL_PMBCODE, ASL_DATE, ASL_PUBLICIP, ASL_PRIVATEIP, ASL_ACTION)
+  		VALUES(#{pmbCode}, DEFAULT, #{publicIp}, #{privateIp}, #{aslAction})
+	</insert>
+	<select id="getAccessInfo" parameterType="com.hsk.beans.AuthBean" resultType="com.hsk.beans.AuthBean">
+		SELECT * FROM ACCESSINFO WHERE PMBCODE = #{pmbCode}
+	</select>
+	<select id="isAccess" parameterType="com.hsk.beans.AuthBean" resultType="string">
+		SELECT ASL_PUBLICIP || ':' || ASL_PRIVATEIP AS PRIVATEIP
+		FROM ASL
+		WHERE TO_CHAR(ASL_DATE, 'YYMMDD') = TO_CHAR(SYSDATE, 'YYMMDD') AND ASL_PMBCODE = #{pmbCode}
+		GROUP BY ASL_PMBCODE, ASL_PUBLICIP, ASL_PRIVATEIP
+		HAVING SUM(ASL_ACTION) = 1
+	</select>
+	<select id="getProCode" parameterType="string" resultType="string">
+		SELECT TO_CHAR(SYSDATE, 'YYMMDDHH24MISS') || PMB_CODE AS PROCODE FROM PMB WHERE PMB_CODE = #{pmbCode}
+	</select>
+	<insert id="insPro" parameterType="com.hsk.beans.ProBean">
+		INSERT INTO PRO(PRO_CODE, PRO_NAME, PRO_COMMENTS, PRO_START, PRO_END, PRO_VISIBLE)
+  		VALUES(#{proCode}, #{proName}, #{proComments}, TO_DATE(#{proStart}, 'YYYY-MM-DD'), TO_DATE(#{proEnd}, 'YYYY-MM-DD'), #{proVisible})
+	</insert>
+	<select id="getMembers" parameterType="com.hsk.beans.AuthBean" resultType="com.hsk.beans.AuthBean">
+		SELECT * FROM PMBMEMBERS WHERE PMBCODE != #{pmbCode}
+	</select>
+	<update id="insPrm" parameterType="com.hsk.beans.ProBean">
+		<foreach item="memberInfo" collection="proMembers" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+			INTO PRM(PRM_PROCODE, PRM_PMBCODE, PRM_POSITION, PRM_ACCEPT)
+  			VALUES(#{proCode},#{memberInfo.pmbCode},#{memberInfo.proPosition},#{memberInfo.proAccept})
+  		</foreach>
+	</update>
+	<insert id="insAul" parameterType="com.hsk.beans.AulBean">
+		INSERT INTO AUL(AUL_SPMBCODE, AUL_RPMBCODE, AUL_INVITEDATE, AUL_EXPIRE, AUL_AUTHRESULT)
+  		VALUES(#{sender},#{receiver},default,default,default)
+	</insert>
+	<select id="isPrm" parameterType="com.hsk.beans.ProMembersBean" resultType="com.hsk.beans.AulBean">
+		SELECT * FROM RINVITEINFO WHERE RECEIVER = #{pmbCode} AND INVITEDATE = TO_DATE(#{inviteDate}, 'YYYYMMDDHH24MISS')
+	</select>
+	<select id="isPro" parameterType="com.hsk.beans.ProBean" resultType="int">
+		SELECT COUNT(*) FROM PRO WHERE PRO_CODE = #{proCode}
+	</select>
+	<select id="receivedInvitationInfo" parameterType="com.hsk.beans.AuthBean" resultType="com.hsk.beans.AulBean">
+		<![CDATA[
+		SELECT 	SENDER, SENDERNAME, RECEIVER, TO_CHAR(INVITEDATE,'YYYYMMDDHH24MISS') AS INVITEDATE, 
+				TO_CHAR(EXPIREDATE, 'YYYYMMDDHH24MISS') AS EXPIREDATE, AUTHRESULT
+		FROM RINVITEINFO 
+		WHERE RECEIVER = #{pmbCode} AND INVITEDATE >= (SYSDATE - 1)
+		]]>
+	</select>
+	<select id="sendInvitationInfo" parameterType="com.hsk.beans.AuthBean" resultType="com.hsk.beans.AulBean">
+	<![CDATA[
+		SELECT 	SENDER, RECEIVER, RECEIVERNAME, TO_CHAR(INVITEDATE,'YYYYMMDDHH24MISS') AS INVITEDATE, 
+				TO_CHAR(EXPIREDATE, 'YYYYMMDDHH24MISS') AS EXPIREDATE, AUTHRESULT, AUTHRESULTNAME
+		FROM SINVITEINFO
+		WHERE SENDER = #{pmbCode} AND INVITEDATE >= (SYSDATE - 2)
+		]]>
+	</select>
+	<update id="updPrm" parameterType="com.hsk.beans.ProMembersBean">
+			UPDATE PRM SET PRM_ACCEPT = #{proAccept} WHERE PRM_PROCODE = #{proCode} AND PRM_PMBCODE = #{pmbCode} 
+	</update>
+	<update id="updAul" parameterType="com.hsk.beans.AulBean">
+			UPDATE AUL SET AUL_AUTHRESULT = #{authResult} WHERE AUL_SPMBCODE = #{sender} AND AUL_RPMBCODE = #{receiver} AND AUL_INVITEDATE = TO_DATE(#{inviteDate}, 'YYYYMMDDHH24MISS')
+	</update>
+	<select id="getMyProject" parameterType="com.hsk.beans.ProInfoBean" resultType="com.hsk.beans.ProInfoBean">
+		SELECT  PROCODE, PRONAME, "PERIOD",
+				PRM.PRM_PMBCODE AS DIRCODE,
+				PMB.PMB_NAME AS DIRECTOR
+		FROM MYPROJECT MP INNER JOIN PRM ON MP.PROCODE = PRM.PRM_PROCODE
+                  INNER JOIN PMB ON PRM.PRM_PMBCODE = PMB.PMB_CODE
+		WHERE MP.PMBCODE = #{pmbCode} AND MP.PRMACCEPT = 'AC' AND PRM.PRM_POSITION = 'MG'
+	</select>
+</mapper>

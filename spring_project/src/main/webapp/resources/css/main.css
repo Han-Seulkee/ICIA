@@ -1,0 +1,185 @@
+@charset "UTF-8";
+/* 초대장 */
+#invitations {
+	height: 55%;
+	margin-top: 25px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#rInfo {
+	width: 47%;
+	overflow-y: scroll;
+}
+
+#sInfo {
+	width: 47%;
+	overflow-y: scroll;
+}
+
+.notice {
+	text-align: center;
+	transition: 0.5s;
+}
+
+.notice.title {
+	margin: 0px auto;
+	width: 100%;
+	height: 50px;
+	font-size: 1.3rem;
+	line-height: 50px;
+	background-color: #C2D8DC;
+	color: #70706f;
+	font-weight: 800;
+	border-radius: 5px;
+}
+
+.member {
+	display: flex;
+	margin: 10px auto;
+	width: 25rem;
+	height: 35px;
+	line-height: 35px;
+}
+
+.items {
+	margin: 0 auto;
+}
+
+.name {
+	
+}
+
+.invite {
+	
+}
+
+.expire {
+	
+}
+
+.accept {
+	
+}
+
+/* 프로젝트 정보 */
+#projects {
+	height: 40%;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+#projectField {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.pj {
+	margin: 10px auto;
+	width: 25rem;
+	line-height: 35px;
+}
+
+/* 버튼 */
+#sendBtn {
+	position: absolute;
+	bottom: 10%;
+	width: 30%;
+	height: 30px;
+}
+
+.togglebtn {
+	position: relative;
+	margin-top: 25px;
+	text-align: center;
+	width: 80%;
+	height: 30px;
+	background-color: #5D8C95;
+	border: 1px solid #FFFFFF;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-weight: 900;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.togglebtn:hover {
+	background-color: #C2D8DC;
+	transform: translateX(10%);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.long-btn {
+	position:absolute;
+	width: 50px;
+	height: 50px;
+	background-color: #ffffff;
+	color: #C2D8DC;
+	border: 1px solid #ffffff;
+	border-radius: 25px;
+	font-size: 20px;
+	z-index:1;
+}
+
+.long-btn:hover {
+	width: 50px;
+	height: 50px;
+	background-color: ffffff;
+	color: #5D8C95;
+	border: 1px solid #ffffff;
+	border-radius: 25px;
+	font-size: 20px;
+}
+
+#prev {
+	left: 0;
+}
+
+#next {
+	right: 0;
+}
+
+/*  */
+.m_box {
+	margin-top: 15px;
+	text-align: center;
+	width: 80%;
+	/*height: 25px;*/
+	border: 2px solid #5D8C95;
+	border-radius: 15px;
+	font-size: 1rem;
+}
+
+.m_box:hover {
+	background-color: #C2D8DC;
+	transform: translateX(15%);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.m_box.invite {
+	margin-top: 15px;
+	text-align: center;
+	width: 80%;
+	/*height: 25px;*/
+	border: 2px solid #5D8C95;
+	border-radius: 15px;
+	font-size: 1rem;
+}
+
+.m_box.invite:hover {
+	background-color: #C2D8DC;
+	transform: translateX(-15%);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+span.s_text {
+	font-size: 0.8rem;
+}
+
+span.g_text {
+	font-size: 1.1rem;
+}
